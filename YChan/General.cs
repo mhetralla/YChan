@@ -158,15 +158,19 @@ namespace YChan {
         }
         public static Imageboard createNewIMB(string url, bool board) {                                 // Create a new Imageboard
             if(!board) {
-                if(Fchan.isThread(url))                                                                 // if FChan, create FChan
+                if (Fchan.isThread(url))                                                                 // if FChan, create FChan
                     return new Fchan(url, board);
-                else if(Infinitechan.isThread(url))
+                else if (Infinitechan.isThread(url))
                     return new Infinitechan(url, board);
+                else if (Fchan_nsfw.isThread(url))
+                    return new Fchan_nsfw(url, board);
             } else {
-                if(Fchan.isBoard(url))
+                if (Fchan.isBoard(url))
                     return new Fchan(url, board);                                                       // if 8chan, create 8chan
-                else if(Infinitechan.isBoard(url))
+                else if (Infinitechan.isBoard(url))
                     return new Infinitechan(url, board);
+                else if (Fchan_nsfw.isBoard(url))
+                    return new Fchan_nsfw(url, board);
             }
             return null;
         }
